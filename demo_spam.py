@@ -9,11 +9,11 @@ from sklearn.model_selection import KFold
 from sklearn.utils import shuffle
 
 from models import linear_svm
-np.random.seed(4)
+np.random.seed(4444)
 # Loading the spam data
 spam = pd.read_csv("data/spam/spam.csv",header=None,sep=" ")
 train_or_test = np.loadtxt("data/spam/spam.traintest.txt")
-print("Number of records:",len(spam))
+print("Total number of records:",len(spam))
 
 # All but last column are the features that we will use to predict
 X = spam.iloc[:,:-1]
@@ -32,10 +32,17 @@ X_test = scaler.transform(X_test)
 
 print("Training model...")
 LSVM = linear_svm.LinearSVM()
+# training the model using my custom SVM
 w, w_vals, obj_vals = LSVM.fit(X=X_train,Y=Y_train,lam=None)
 
-# LSVM.plot_objective(obj_vals)
-# print(LSVM.calc_error(w,X_test,Y_test))
-# LSVM.plot_training_error(w_vals,X_train,Y_train,X_test,Y_test)
-# print(LSVM.predict(w,X_train))
-# print(LSVM.cross_validate(X_train,Y_train))
+# plot objective function after each iteraion
+LSVM.plot_objective(obj_vals)
+# plot train and test error after each iteraion
+LSVM.plot_training_error(w_vals,X_train,Y_train,X_test,Y_test)
+
+ypred = LSVM.predict(w,X_test)
+ypred_rectified = [0 if yi==-1 else 1 for yi in ypred]
+# Saving the predictions in a numpy array
+print("Saving predictions in spam_test_predict.npy...")
+np.save("spam_test_predict.npy",ypred_rectified)
+print("Accuracy on test set:",np.mean(ypred==Y_test))

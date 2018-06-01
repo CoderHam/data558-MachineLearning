@@ -109,9 +109,11 @@ class LinearSVM():
             Plots the change in objective values with each iteration
         """
         fig = plt.gcf()
-        fig.set_size_inches(10, 6)
+        fig.set_size_inches(12,9)
         plt.plot(np.arange(len(obj_vals)),obj_vals,label="huberized hinge loss")
-        plt.legend(bbox_to_anchor=(1.05, 1), loc=2, borderaxespad=0.)
+        # plt.legend(bbox_to_anchor=(1.05, 1), loc=2, borderaxespad=0.)
+        plt.legend(loc='upper right')
+        plt.title('Objective function vs Iterations')
         plt.show()
 
     def calc_error(self, beta, x, y):
@@ -134,12 +136,13 @@ class LinearSVM():
             error_train[i] = self.calc_error(betas[i], x, y)
             error_val[i] = self.calc_error(betas[i], x2, y2)
 
-        fig = plt.figure(figsize=(12, 8))
+        fig = plt.figure(figsize=(12, 9))
         plt.plot(range(length), error_train, c='blue', label='train')
         plt.plot(range(length), error_val, c='red', label='test/val')
         plt.xlabel('Number of Iteration')
         plt.ylabel('Misclassification error')
         plt.legend(loc='upper right')
+        plt.title('Train and Test error vs Iterations')
         plt.show()
         print("Final train error:",error_train[i])
         print("Final test error:",error_val[i])
