@@ -8,14 +8,24 @@ The model is implemented in [linear_svm.py]models/linear_svm.py. It uses fast gr
 
 ## Demos
 
-For testing with the spam dataset (real world) - Binary classifier
+For testing with the Spam dataset (from the book The Elements of Statistical Learning) - Binary classifier
 ```
 python3 demo_spam.py
 ```
 
-For testing with the vowel dataset (real world) - Multinomial classifier using binary
+For testing with the Vowel dataset (from the book The Elements of Statistical Learning) - Multinomial classifier is built using binary classifiers in one-vs-one style.
 ```
 python3 demo_vowel.py
+```
+
+For testing with a custom generated dataset (simulated) - Binary classifier. Bonus - compare performance with sklearn
+```
+python3 demo_simulated.py
+```
+
+For comparing custom implemented with sklearn on spam dataset (real world) - Binary classifier
+```
+python3 compare_spam.py
 ```
 
 ## Usage

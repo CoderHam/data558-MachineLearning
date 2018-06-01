@@ -81,7 +81,6 @@ def multi_predict(X_features):
     ypred = ypred.T
     ypred_final = [Counter(fp).most_common(1)[0][0] for fp in ypred]
     return ypred_final
-# Saving the predictions in a numpy array
 ypred_final = multi_predict(X_test)
 
 print("Saving predictions in vowel_test_predict.npy...")

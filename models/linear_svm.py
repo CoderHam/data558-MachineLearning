@@ -71,7 +71,7 @@ class LinearSVM():
                 i += 1
         return t
 
-    def fit(self,X,Y,lam=1,h=0.5,eps=1e-5,max_iter=1000):
+    def fit(self,X,Y,lam=1,h=0.5,eps=1e-6,max_iter=1000):
         """
             The fast gradient algorithm is used to train the model.
             default: lambda = 1, maximum iterations = 1000
