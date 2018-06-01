@@ -37,6 +37,11 @@ weights = LSVM.fit(train_features,train_labels)
 test_predictions = LSVM.predict(weights,test_features)
 ```
 
+
+## Data
+
+The data is present in the [data]data/ folder and can also be downloaded from https://web.stanford.edu/~hastie/ElemStatLearn/data.html. There are a few other datasets available there to play around with.
+
 # Required Libraries (Python 3)
 
 numpy
